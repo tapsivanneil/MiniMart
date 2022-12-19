@@ -1,9 +1,10 @@
-public class Card {
+public class Mastercard {
     private String cardName;
     private double cardBalance;
     private int idNum;
-    private boolean masterCardStat;
-    //private int masterCardPass = 12345;
+    private boolean masterCardStat = true;
+    private int masterCardPass = 12345;
+
 
     public void setCardName(String cardName){
         this.cardName = cardName;
@@ -38,10 +39,10 @@ public class Card {
         return masterCardStat;
     }
 
-    // //public int getMasterCardPass(){
-    //     return masterCardPass;
-    // }
-
+        public int getMasterCardPass(){
+        return masterCardPass;
+    }
 
 }
+
 
