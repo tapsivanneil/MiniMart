@@ -1,17 +1,32 @@
 import java.util.*;
 public class Terminal {
-    public void startTerminal(boolean masterCardStat){
+    public void startTerminal(){
         
         Scanner sc = new Scanner(System.in);
         Store store = new Store();
         
-        Card card = new Card (); card.setMasterCardStat(masterCardStat);
+        Card card = new Card ();
+        Mastercard mc = new Mastercard();
         actionMenu();
+
+        System.out.print("\nPlease enter your name");
+        String cusName = sc.nextLine();
+        System.out.print("\n You're " + cusName + ", is that right? [1] Yes [2] No :");
+        int confirmName = sc.nextInt();
+
+        while(confirmName < 1 || confirmName > 2){
+            System.out.println("Invalid answer! Please try again.");
+            System.out.print("\n You're " + cusName + ", is that right? [1] Yes [2] No :");
+            confirmName = sc.nextInt();
+        }
+
+        if(confirmName == 1){
+            
+        }
 
         System.out.print("Enter Action Number: ");
         int actionNum = sc.nextInt();
 
-        
         
         while(actionNum > 6 || actionNum < 1){
             actionMenu();
@@ -22,6 +37,23 @@ public class Terminal {
         switch (actionNum){
             case 1:
                 //card
+            case 2:
+                System.out.print("Please enter the mastercard password: ");
+                int masPass = sc.nextInt();
+
+                if (masPass == mc.getMasterCardPass()){
+                    startTerminal();
+                }
+
+                int attempt = 3;
+                while(attempt >=1){
+                    System.out.print("Please enter the mastercard password (Remaining attempts:  " + attempt + "): ");
+                    masPass = sc.nextInt();
+                    attempt --;
+                }
+                if (attempt < 1){
+                    startTerminal();
+                }
         }
 
 
@@ -36,6 +68,9 @@ public class Terminal {
         System.out.println("6. Payment");
 
     }
+
+    
+
 
     public void goodByeMessage(){
         System.out.println("Thank you for shopping with us, I hope you will come back soon! ");
