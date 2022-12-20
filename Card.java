@@ -38,9 +38,11 @@ public class Card {
         return masterCardStat;
     }
 
-    // //public int getMasterCardPass(){
-    //     return masterCardPass;
-    // }
+    public void showCardInfo (){
+        System.out.println("Name: " + cardName);
+        System.out.println("ID Number: " + idNum);
+        System.out.println("Balance: " + cardBalance);
+    }
 
 
 }
