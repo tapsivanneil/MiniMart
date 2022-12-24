@@ -4,15 +4,15 @@ public class Terminal {
         
         Scanner sc = new Scanner(System.in);
         Store store = new Store();
+
         
         Card card = new Card (); 
         //insert rand card num for idNUM
         Mastercard mc = new Mastercard();
-        actionMenu();
 
         System.out.print("\nPlease enter your name: ");
         String cusName = sc.nextLine();
-        System.out.print("\n You're " + cusName + ", is that right? [1] Yes [2] No :");
+        System.out.print("\n You're " + cusName + ", is that right? [1] Yes [2] No : ");
         int confirmName = sc.nextInt();
 
         while(confirmName !=1 && confirmName != 2){
@@ -40,38 +40,46 @@ public class Terminal {
 
         System.out.println("\nGood Day "+ card.getCardName() + "! Welcome to Minimart \n");
         
-        System.out.print("Enter Action Number: ");
-        int actionNum = sc.nextInt();
-
-        
-        while(actionNum > 6 || actionNum < 1){
+        while(true){
+            
             actionMenu();
-            System.out.println("\nInvalid Action Number! Please try another number: ");
-            actionNum = sc.nextInt();
-        }
 
-        switch (actionNum){
-            case 1:
-                card.showCardInfo();
-                break;
-            case 2:
-                System.out.print("Please enter the mastercard password: ");
-                int masPass = sc.nextInt();
+            System.out.print("Enter Action Number: ");
+            int actionNum = sc.nextInt();
 
-                if (masPass == mc.getMasterCardPass()){
-                    startTerminal();
-                }
+            
+            while(actionNum > 6 || actionNum < 1){
+                actionMenu();
+                System.out.println("\nInvalid Action Number! Please try another number: ");
+                actionNum = sc.nextInt();
+            }
 
-                int attempt = 3;
-                while(attempt >=1){
-                    System.out.print("Please enter the mastercard password (Remaining attempts:  " + attempt + "): ");
-                    masPass = sc.nextInt();
-                    attempt --;
-                }
-                if (attempt < 1){
-                    startTerminal();
-                }
-                break;
+            switch (actionNum){
+                case 1:
+                    card.showCardInfo();
+                    break;
+                case 2:
+                    System.out.print("Please enter the mastercard password: ");
+                    int masPass = sc.nextInt();
+
+                    int attempt = 3;
+                    while(masPass != mc.getMasterCardPass() && attempt >=1){
+                        System.out.print("Please enter the mastercard password (Remaining attempts:  " + attempt + "): ");
+                        masPass = sc.nextInt();
+                        attempt --;
+                    }
+                    if (attempt < 1){
+                        startTerminal();
+                    }
+
+                    if (masPass == mc.getMasterCardPass()){
+                        store.addItem();
+                    }
+                    break;
+                case 3:
+                    store.showItems();
+                    break;
+            }
         }
     }
     public void actionMenu (){

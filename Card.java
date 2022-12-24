@@ -39,7 +39,7 @@ public class Card {
     }
 
     public void showCardInfo (){
-        System.out.println("Name: " + cardName);
+        System.out.println("\nName: " + cardName);
         System.out.println("ID Number: " + idNum);
         System.out.println("Balance: " + cardBalance);
     }
