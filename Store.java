@@ -12,7 +12,6 @@ public class Store {
 
     public void addItem(){
 
-
         System.out.print("Name of an Item: ");
         String itemName1 = sc.nextLine();
         System.out.print("Enter Price of the Item: ");
@@ -20,9 +19,6 @@ public class Store {
         System.out.print("Enter quantity of this Item: ");
         int itemQuantity1 = sc.nextInt();
 
-        itemName.add(itemName1); itemPrice.add(itemPrice1); itemQuantity.add(itemQuantity1);
-        System.out.println(itemName.get(0) + "\t" + itemPrice.get(0) + "\t" + itemQuantity.get(0) + "\t" + itemID.get(0) );
-        
     }
 
     public void showItems (){
