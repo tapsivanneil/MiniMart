@@ -69,7 +69,7 @@ public class Terminal {
                         attempt --;
                     }
                     if (attempt < 1){
-                        startTerminal();
+                        break;
                     }
 
                     if (masPass == mc.getMasterCardPass()){
