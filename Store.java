@@ -4,14 +4,23 @@ import java.util.*;
 public class Store {
 
     Scanner sc = new Scanner(System.in);
+    Random r = new Random();
 
-    ArrayList itemName = new ArrayList<>();
-    ArrayList itemID = new ArrayList<>();
-    ArrayList itemQuantity = new ArrayList<>();
-    ArrayList itemPrice = new ArrayList<>();
+    private List<String> itemName = new ArrayList<>();
+    private List<Integer> itemID = new ArrayList<>();;
+    private List<Integer> itemQuantity = new ArrayList<>();;
+    private List<Double> itemPrice = new ArrayList<>();;
+
+    public Store (){
+        itemName.add("Bearbrand"); itemID.add(100000 + r.nextInt(900000)); itemPrice.add(10.50); itemQuantity.add(10);
+        itemName.add("Alaska"); itemID.add(100000 + r.nextInt(900000)); itemPrice.add(10.50); itemQuantity.add(10);
+        itemName.add("Gatorade"); itemID.add(100000 + r.nextInt(900000)); itemPrice.add(10.50); itemQuantity.add(10);
+        itemName.add("Green Cross Alcohol"); itemID.add(100000 + r.nextInt(900000)); itemPrice.add(10.50); itemQuantity.add(10);
+        itemName.add("Palmolive"); itemID.add(100000 + r.nextInt(900000)); itemPrice.add(10.50); itemQuantity.add(10);
+        
+    }
 
     public void addItem(){
-
         System.out.print("Name of an Item: ");
         String itemName1 = sc.nextLine();
         System.out.print("Enter Price of the Item: ");
@@ -21,10 +30,12 @@ public class Store {
     }
 
     public void showItems (){
-        System.out.println("Item Name\tItem Price\tItems left\tItem ID");
-        for(int i = 1; itemName.size() > i; i++){
+        String formattedHead = String.format("Item Name %25s","PriceItems left %25s","Item ID"); 
+        System.out.println(formattedHead);
+        for(int i = 0; itemName.size() > i; i++){
             System.out.println(itemName.get(i) + "\t" + itemPrice.get(i) + "\t" + itemQuantity.get(i) + "\t" + itemID.get(i) );
         }
+
     }
 
 

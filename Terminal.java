@@ -3,9 +3,9 @@ public class Terminal {
     public void startTerminal(){
         
         Scanner sc = new Scanner(System.in);
-        Store store = new Store();
-
+        Store store = new Store();  
         
+        store.showItems();
         Card card = new Card (); 
         //insert rand card num for idNUM
         Mastercard mc = new Mastercard();
