@@ -18,7 +18,6 @@ public class Store {
         double itemPrice1 = sc.nextDouble();
         System.out.print("Enter quantity of this Item: ");
         int itemQuantity1 = sc.nextInt();
-
     }
 
     public void showItems (){

@@ -79,6 +79,11 @@ public class Terminal {
                 case 3:
                     store.showItems();
                     break;
+                case 4:
+                    card.addCardBalance();
+                    break;
+                
+                    
             }
         }
     }

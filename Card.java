@@ -54,6 +54,5 @@ public class Card {
         cardBalance = sc.nextDouble();
     }
 
-
 }
 
