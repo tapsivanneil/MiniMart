@@ -1,4 +1,9 @@
+import java.util.*;
+
 public class Card {
+
+    Scanner sc = new Scanner(System.in);
+
     private String cardName;
     private double cardBalance;
     private int idNum;
@@ -41,7 +46,12 @@ public class Card {
     public void showCardInfo (){
         System.out.println("\nName: " + cardName);
         System.out.println("ID Number: " + idNum);
-        System.out.println("Balance: " + cardBalance);
+        System.out.println("Balance: " + cardBalance + "\n");
+    }
+
+    public void addCardBalance(){
+        System.out.print("\nEnter the amount: ");
+        cardBalance = sc.nextDouble();
     }
 
 
