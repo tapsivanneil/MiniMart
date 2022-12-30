@@ -5,7 +5,7 @@ public class Terminal {
         Scanner sc = new Scanner(System.in);
         Store store = new Store();  
         
-        store.showItems();
+        //store.showItems(); //for item testing only
         Card card = new Card (); 
         //insert rand card num for idNUM
         Mastercard mc = new Mastercard();
@@ -88,12 +88,12 @@ public class Terminal {
         }
     }
     public void actionMenu (){
-        System.out.println("1. Show Card Info");
+        System.out.println("\n1. Show Card Info");
         System.out.println("2. Access Store (Mastercard Access)");
-        System.out.println("3. Show Items");
+        System.out.println("3. Buy Items");
         System.out.println("4. Load you Card");
         System.out.println("5. Access Shopping Cart");
-        System.out.println("6. Payment");
+        System.out.println("6. Payment\n");
     }
 
     public void goodByeMessage(){

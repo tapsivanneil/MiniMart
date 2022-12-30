@@ -40,7 +40,8 @@ public class Store {
         String formattedItemLeft = String.format("Item Left %10s","");
         String formattedItemID = String.format("Item ID %10s","");
         System.out.println(formattedItemName + formattedItemPrice + formattedItemLeft + formattedItemID);
-        for(int i = 0; itemName.size() > i; i++){
+        
+        for(int i = 0; itemName.size() > i; i++){ //Displaying store items
             int itemName_indent = itemName.get(i).length()-25;
             int num = i + 1;
             String form_itemName = String.format(itemName.get(i)+"%"+ itemName_indent+"s","");
@@ -52,11 +53,26 @@ public class Store {
                 System.out.println("["+0+num+"] "+form_itemName + form_itemPrice + form_itemQuantity + form_itemID);
             }
             else{
-                System.out.println("["+num+"] "+form_itemName + form_itemPrice + form_itemQuantity + form_itemID);
+                System.out.println("["+num+"] "+form_itemName + form_itemPrice + form_itemQuantity + form_itemID);   
             }
-
-            
         }
+
+        System.out.println("\nInsert the Item Number that you would like to purchase: ");
+        Object itemChoice = sc.nextInt();
+
+        while (!(itemChoice instanceof Integer)){
+            System.out.println("\nInvalid input! Insert the Item Number that you would like to purchase: ");
+            itemChoice = sc.nextInt();
+        }
+
+        int itemChoiceVal = (Integer) itemChoice;
+        while(itemChoiceVal <= 0 || itemChoiceVal > itemName.size()){
+            System.out.println("\nInput Out of Range! Insert the Item Number that you would like to purchase: ");
+            itemChoice = sc.nextInt();
+        }
+
+        System.out.println("Great");
+
 
     }
 
