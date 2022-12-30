@@ -35,10 +35,20 @@ public class Store {
     }
 
     public void showItems (){
-        String formattedHead = String.format("Item Name %25s","PriceItems left %25s","Item ID"); 
-        System.out.println(formattedHead);
+        String formattedItemName = String.format("Item Name %12s","");
+        String formattedItemPrice = String.format("Price %10s","");
+        String formattedItemLeft = String.format("Item Left %10s","");
+        String formattedItemID = String.format("Item ID %10s","");
+        System.out.println(formattedItemName + formattedItemPrice + formattedItemLeft + formattedItemID);
         for(int i = 0; itemName.size() > i; i++){
-            System.out.println(itemName.get(i) + "\t" + itemPrice.get(i) + "\t" + itemQuantity.get(i) + "\t" + itemID.get(i) );
+            int itemName_indent = itemName.get(i).length()-22;
+    
+            String form_itemName = String.format(itemName.get(i)+"%"+ itemName_indent+"s","");
+            String form_itemPrice = String.format(itemPrice.get(i)+"%15s","");
+            String form_itemQuantity = String.format(itemQuantity.get(i)+"%15s","");
+            String form_itemID = String.format(itemID.get(i)+"%10s","");
+
+            System.out.println(form_itemName + form_itemPrice + form_itemQuantity + form_itemID);
         }
 
     }
