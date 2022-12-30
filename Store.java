@@ -17,6 +17,11 @@ public class Store {
         itemName.add("Gatorade"); itemID.add(100000 + r.nextInt(900000)); itemPrice.add(10.50); itemQuantity.add(10);
         itemName.add("Green Cross Alcohol"); itemID.add(100000 + r.nextInt(900000)); itemPrice.add(10.50); itemQuantity.add(10);
         itemName.add("Palmolive"); itemID.add(100000 + r.nextInt(900000)); itemPrice.add(10.50); itemQuantity.add(10);
+        itemName.add("Colgate"); itemID.add(100000 + r.nextInt(900000)); itemPrice.add(10.50); itemQuantity.add(10);
+        itemName.add("Tortillos_Cheese"); itemID.add(100000 + r.nextInt(900000)); itemPrice.add(10.50); itemQuantity.add(10);
+        itemName.add("Tortillos_Barbeque"); itemID.add(100000 + r.nextInt(900000)); itemPrice.add(10.50); itemQuantity.add(10);
+        itemName.add("Roller Coaster"); itemID.add(100000 + r.nextInt(900000)); itemPrice.add(10.50); itemQuantity.add(10);
+        itemName.add("Safeguard_Small"); itemID.add(100000 + r.nextInt(900000)); itemPrice.add(10.50); itemQuantity.add(10);
         
     }
 
