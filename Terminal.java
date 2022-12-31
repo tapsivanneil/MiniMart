@@ -82,7 +82,9 @@ public class Terminal {
                 case 4:
                     card.addCardBalance();
                     break;
-                
+                case 5:
+                    store.showCart();
+                    break;
                     
             }
         }

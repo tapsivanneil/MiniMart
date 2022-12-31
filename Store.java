@@ -7,9 +7,15 @@ public class Store {
     Random r = new Random();
 
     private List<String> itemName = new ArrayList<>();
-    private List<Integer> itemID = new ArrayList<>();;
-    private List<Integer> itemQuantity = new ArrayList<>();;
-    private List<Double> itemPrice = new ArrayList<>();;
+    private List<Integer> itemID = new ArrayList<>();
+    private List<Integer> itemQuantity = new ArrayList<>();
+    private List<Double> itemPrice = new ArrayList<>();
+
+    private List<String> itemName_Cart = new ArrayList<>();
+    private List<Integer> itemID_Cart = new ArrayList<>();
+    private List<Integer> itemQuantity_Cart = new ArrayList<>();
+    private List<Double> itemPrice_Cart = new ArrayList<>();
+    
 
     public Store (){
         itemName.add("Bearbrand"); itemID.add(100000 + r.nextInt(900000)); itemPrice.add(10.50); itemQuantity.add(10);
@@ -70,13 +76,30 @@ public class Store {
         int itemChoiceVal = (Integer) itemChoice;
         while(itemChoiceVal <= 0 || itemChoiceVal > itemName.size()){
             System.out.println("\nInput Out of Range! Insert the Item Number that you would like to purchase: ");
-            itemChoice = sc.nextInt();
+            itemChoiceVal = sc.nextInt();
         }
 
+        itemName.add(itemName.get(itemChoiceVal)); itemPrice.add(itemPrice.get(itemChoiceVal)); itemQuantity.add(1); itemID_Cart.add(itemID.get(itemChoiceVal));
+
         System.out.println("Great");
-
-
     }
 
+    public void showCart() {
+        for(int i = 0; itemName_Cart.size() > i; i++){ //Displaying store items
+            int itemName_indent = itemName_Cart.get(i).length()-25;
+            int num = i + 1;
+            String form_itemName = String.format(itemName_Cart.get(i)+"%"+ itemName_indent+"s","");
+            String form_itemPrice = String.format(itemPrice_Cart.get(i)+"%15s","");
+            String form_itemQuantity = String.format(itemQuantity_Cart.get(i)+"%15s","");
+            String form_itemID = String.format(itemID_Cart.get(i)+"%10s","");
+
+            if(i<9){
+                System.out.println("["+0+num+"] "+form_itemName + form_itemPrice + form_itemQuantity + form_itemID);
+            }
+            else{
+                System.out.println("["+num+"] "+form_itemName + form_itemPrice + form_itemQuantity + form_itemID);   
+            }
+        }
+    }
 
 }
