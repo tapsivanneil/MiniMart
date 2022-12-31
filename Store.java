@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-
+import java.net.SocketTimeoutException;
 import java.util.*;
 public class Store {
 
@@ -65,41 +65,57 @@ public class Store {
             }
         }
 
-        System.out.println("\nInsert the Item Number that you would like to purchase: ");
-        Object itemChoice = sc.nextInt();
+        System.out.print("\nInsert the Item Number that you would like to purchase: ");
+        //Object itemChoice = sc.nextInt();
 
-        while (!(itemChoice instanceof Integer)){
-            System.out.println("\nInvalid input! Insert the Item Number that you would like to purchase: ");
-            itemChoice = sc.nextInt();
-        }
+        // while (!(itemChoice instanceof Integer)){
+        //     System.out.println("\nInvalid input! Insert the Item Number that you would like to purchase: ");
+        //     itemChoice = sc.nextInt();
+        // }
 
-        int itemChoiceVal = (Integer) itemChoice;
+        //int itemChoiceVal = (Integer) itemChoice;
+
+        int itemChoiceVal = sc.nextInt();
+
         while(itemChoiceVal <= 0 || itemChoiceVal > itemName.size()){
             System.out.println("\nInput Out of Range! Insert the Item Number that you would like to purchase: ");
             itemChoiceVal = sc.nextInt();
         }
 
-        itemName.add(itemName.get(itemChoiceVal)); itemPrice.add(itemPrice.get(itemChoiceVal)); itemQuantity.add(1); itemID_Cart.add(itemID.get(itemChoiceVal));
+        
+
+        itemName_Cart.add(itemName.get(itemChoiceVal)); itemPrice_Cart.add(itemPrice.get(itemChoiceVal)); itemQuantity_Cart.add(1); itemID_Cart.add(itemID.get(itemChoiceVal));
 
         System.out.println("Great");
     }
 
     public void showCart() {
-        for(int i = 0; itemName_Cart.size() > i; i++){ //Displaying store items
-            int itemName_indent = itemName_Cart.get(i).length()-25;
-            int num = i + 1;
-            String form_itemName = String.format(itemName_Cart.get(i)+"%"+ itemName_indent+"s","");
-            String form_itemPrice = String.format(itemPrice_Cart.get(i)+"%15s","");
-            String form_itemQuantity = String.format(itemQuantity_Cart.get(i)+"%15s","");
-            String form_itemID = String.format(itemID_Cart.get(i)+"%10s","");
-
-            if(i<9){
-                System.out.println("["+0+num+"] "+form_itemName + form_itemPrice + form_itemQuantity + form_itemID);
-            }
-            else{
-                System.out.println("["+num+"] "+form_itemName + form_itemPrice + form_itemQuantity + form_itemID);   
-            }
+        if (itemName_Cart.size() == 0){
+            System.out.println("There are no items in your cart");
         }
+        else{
+            String formattedItemName = String.format("     Item Name %15s","");
+            String formattedItemPrice = String.format("Price %10s","");
+            String formattedItemLeft = String.format("Item Left %10s","");
+            String formattedItemID = String.format("Item ID %10s","");
+            System.out.println(formattedItemName + formattedItemPrice + formattedItemLeft + formattedItemID);
+
+            for(int i = 0; itemName_Cart.size() > i; i++){ //Displaying store items
+                int itemName_indent = itemName_Cart.get(i).length()-25;
+                int num = i + 1;
+                String form_itemName = String.format(itemName_Cart.get(i)+"%"+ itemName_indent+"s","");
+                String form_itemPrice = String.format(itemPrice_Cart.get(i)+"%15s","");
+                String form_itemQuantity = String.format(itemQuantity_Cart.get(i)+"%15s","");
+                String form_itemID = String.format(itemID_Cart.get(i)+"%10s","");
+
+                if(i<9){
+                    System.out.println("["+0+num+"] "+form_itemName + form_itemPrice + form_itemQuantity + form_itemID);
+                }
+                else{
+                    System.out.println("["+num+"] "+form_itemName + form_itemPrice + form_itemQuantity + form_itemID);   
+                }
+            }
+            }
     }
 
 }
