@@ -1,10 +1,13 @@
 import java.util.ArrayList;
 import java.net.SocketTimeoutException;
+import java.rmi.StubNotFoundException;
 import java.util.*;
 public class Store {
 
     Scanner sc = new Scanner(System.in);
     Random r = new Random();
+
+    double totalAmount;
 
     private List<String> itemName = new ArrayList<>();
     private List<Integer> itemID = new ArrayList<>();
@@ -79,10 +82,17 @@ public class Store {
 
         while(itemChoiceVal <= 0 || itemChoiceVal > itemName.size()){
             System.out.println("\nInput Out of Range! Insert the Item Number that you would like to purchase: ");
-            itemChoiceVal = sc.nextInt();
+            itemChoiceVal = sc.nextInt() - 1;
         }
 
-        
+        System.out.println("Enter Quantity (Remaining Items: "+ itemQuantity.get(itemChoiceVal) +"): ");
+        int quantity = sc.nextInt();
+
+        while(itemName.size()< quantity){
+            System.out.println("Invalid input! We don't have that much " + itemName.get(itemChoiceVal));
+            System.out.print("Enter Quantity (Remaining Items: "+ itemQuantity.get(itemChoiceVal) +"): ");
+            quantity = sc.nextInt();
+        }
 
         itemName_Cart.add(itemName.get(itemChoiceVal)); itemPrice_Cart.add(itemPrice.get(itemChoiceVal)); itemQuantity_Cart.add(1); itemID_Cart.add(itemID.get(itemChoiceVal));
 
@@ -90,13 +100,15 @@ public class Store {
     }
 
     public void showCart() {
+
+        
         if (itemName_Cart.size() == 0){
             System.out.println("There are no items in your cart");
         }
         else{
             String formattedItemName = String.format("     Item Name %15s","");
             String formattedItemPrice = String.format("Price %10s","");
-            String formattedItemLeft = String.format("Item Left %10s","");
+            String formattedItemLeft = String.format("Quantity %10s","");
             String formattedItemID = String.format("Item ID %10s","");
             System.out.println(formattedItemName + formattedItemPrice + formattedItemLeft + formattedItemID);
 
@@ -114,8 +126,12 @@ public class Store {
                 else{
                     System.out.println("["+num+"] "+form_itemName + form_itemPrice + form_itemQuantity + form_itemID);   
                 }
+                totalAmount += itemPrice.get(i);
             }
-            }
+
+        }
+        System.out.println("Total Amount: " + totalAmount);
+    
     }
 
 }
