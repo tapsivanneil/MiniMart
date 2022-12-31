@@ -27,14 +27,16 @@ public class Store {
 
     public void addItem(){
         System.out.print("Name of an Item: ");
-        String itemName1 = sc.nextLine();
+        String itemName1 = sc.nextLine(); itemName.add(itemName1);
         System.out.print("Enter Price of the Item: ");
-        double itemPrice1 = sc.nextDouble();
+        double itemPrice1 = sc.nextDouble(); itemPrice.add(itemPrice1);
         System.out.print("Enter quantity of this Item: ");
-        int itemQuantity1 = sc.nextInt();
+        int itemQuantity1 = sc.nextInt(); itemQuantity.add(itemQuantity1);
+        itemID.add(100000 + r.nextInt(900000));
     }
 
     public void showItems (){
+        System.out.println(itemName.size());
         String formattedItemName = String.format("     Item Name %15s","");
         String formattedItemPrice = String.format("Price %10s","");
         String formattedItemLeft = String.format("Item Left %10s","");
