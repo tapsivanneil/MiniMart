@@ -93,8 +93,8 @@ public class Store {
             System.out.print("Enter Quantity (Remaining Items: "+ itemQuantity.get(itemChoiceVal) +"): ");
             quantity = sc.nextInt();
         }
-
-        itemName_Cart.add(itemName.get(itemChoiceVal)); itemPrice_Cart.add(itemPrice.get(itemChoiceVal)); itemQuantity_Cart.add(1); itemID_Cart.add(itemID.get(itemChoiceVal));
+        itemQuantity.set(itemChoiceVal, itemQuantity.get(itemChoiceVal) - quantity); // deducting bought items in the list
+        itemName_Cart.add(itemName.get(itemChoiceVal)); itemPrice_Cart.add(itemPrice.get(itemChoiceVal)); itemQuantity_Cart.add(quantity); itemID_Cart.add(itemID.get(itemChoiceVal));
 
         System.out.println("Great");
     }
@@ -108,9 +108,9 @@ public class Store {
         else{
             String formattedItemName = String.format("     Item Name %15s","");
             String formattedItemPrice = String.format("Price %10s","");
-            String formattedItemLeft = String.format("Quantity %10s","");
+            String formattedQuantity = String.format("Quantity %10s","");
             String formattedItemID = String.format("Item ID %10s","");
-            System.out.println(formattedItemName + formattedItemPrice + formattedItemLeft + formattedItemID);
+            System.out.println(formattedItemName + formattedItemPrice + formattedQuantity + formattedItemID);
 
             for(int i = 0; itemName_Cart.size() > i; i++){ //Displaying store items
                 int itemName_indent = itemName_Cart.get(i).length()-25;
@@ -130,7 +130,7 @@ public class Store {
             }
 
         }
-        System.out.println("Total Amount: " + totalAmount);
+        System.out.println("\nTotal Amount: " + totalAmount);
     
     }
 
