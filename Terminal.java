@@ -97,7 +97,7 @@ public class Terminal {
         System.out.println("5. Access Shopping Cart");
         System.out.println("6. Payment\n");
     }
-
+    
     public void goodByeMessage(){
         System.out.println("Thank you for shopping with us, I hope you will come back soon! ");
     }
