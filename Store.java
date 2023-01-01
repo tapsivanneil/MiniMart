@@ -101,7 +101,6 @@ public class Store {
 
     public void showCart() {
 
-        
         if (itemName_Cart.size() == 0){
             System.out.println("There are no items in your cart");
         }
@@ -128,10 +127,64 @@ public class Store {
                 }
                 totalAmount += itemPrice.get(i);
             }
-
         }
         System.out.println("\nTotal Amount: " + totalAmount);
+
+        System.out.println("\nWhat do you want to do with your cart?");
+        System.out.println("[1] Add more item(s)");
+        System.out.println("[2] Remove item(s)");
+        System.out.println("[3] Empty cart");
+        System.out.println("[4] Exit");
+
+        System.out.print("Enter action number: ");
+                    int cartActionNum = sc.nextInt();
+
+                    while(cartActionNum <=0 || cartActionNum > 4){
+                        System.out.print("Enter action number: ");
+                        cartActionNum = sc.nextInt();
+                    }
+                    if (cartActionNum == 1){showItems();}
+                    else if(cartActionNum == 2){
+                        System.out.print("Enter the item number that you would like to remove: ");
+                        int remItem = sc.nextInt();
+
+                        while(remItem > itemName_Cart.size() || remItem <= 0){
+                            System.out.println("Invalid input! Try another number: ");
+                            remItem = sc.nextInt() - 1; // minus 1 to fix the indexing
+                        }
+
+                        System.out.print("How many " + itemName_Cart.get(remItem) + " to remove ("+ itemQuantity_Cart.get(remItem)+" item(s) in the cart)? ");
+                        int remItem_Quan = sc.nextInt();
+
+                        while(remItem_Quan > itemQuantity_Cart.get(remItem) || remItem_Quan <= 0){
+                            System.out.print("Invalid input! Try another number ("+ itemQuantity_Cart.get(remItem)+" item(s) in the cart): ");
+                            remItem_Quan = sc.nextInt();
+                        }
+
+                        System.out.print("Would you like to remove " + remItem_Quan + itemName_Cart.get(remItem) + "? [1] Yes [2] No  ");
+                        int valChoice = sc.nextInt();
+
+                        while(valChoice > 2 || valChoice <= 0){
+                            System.out.print("Invalid Input! Would you like to remove " + remItem_Quan + itemName_Cart.get(remItem) + "? [1] Yes [2] No  ");
+                            valChoice = sc.nextInt(); 
+                        }
+
+                        if (valChoice == 1){
+                            if(itemQuantity_Cart.get(remItem)== 1){
+                                itemName_Cart.remove(remItem); itemPrice_Cart.remove(remItem); itemQuantity_Cart.remove(remItem); itemID_Cart.remove(remItem);
+                            }
+                            else{
+                                itemQuantity_Cart.set(remItem, itemQuantity_Cart.get(remItem) - remItem_Quan);
+                            }
+                        }
+
+                    }
     
     }
+    
+    public void cartActionMenu(){
+        
+    }
+
 
 }
