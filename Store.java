@@ -201,9 +201,11 @@ public class Store {
                         }
                         else if (resetChoice == 2) {
                             showCart();
-                        }
+                        }      
+                    }
+
+                    else if (cartActionNum == 4){
                        
-                        
                     }
     }
 }
