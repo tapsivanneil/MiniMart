@@ -125,7 +125,7 @@ public class Store {
                 else{
                     System.out.println("["+num+"] "+form_itemName + form_itemPrice + form_itemQuantity + form_itemID);   
                 }
-                totalAmount += itemPrice.get(i);
+                totalAmount += itemPrice_Cart.get(i) * itemQuantity_Cart.get(i);
             }
         }
         System.out.println("\nTotal Amount: " + totalAmount);
@@ -134,7 +134,7 @@ public class Store {
         System.out.println("[1] Add more item(s)");
         System.out.println("[2] Remove item(s)");
         System.out.println("[3] Empty cart");
-        System.out.println("[4] Exit");
+        System.out.println("[4] Exit\n");
 
         System.out.print("Enter action number: ");
                     int cartActionNum = sc.nextInt();
@@ -144,11 +144,12 @@ public class Store {
                         cartActionNum = sc.nextInt();
                     }
                     if (cartActionNum == 1){showItems();}
+                    
                     else if(cartActionNum == 2){
                         System.out.print("Enter the item number that you would like to remove: ");
-                        int remItem = sc.nextInt();
+                        int remItem = sc.nextInt() -1 ;  // minus 1 to fix the indexing
 
-                        while(remItem > itemName_Cart.size() || remItem <= 0){
+                        while(remItem > itemName_Cart.size() || remItem < 0){
                             System.out.println("Invalid input! Try another number: ");
                             remItem = sc.nextInt() - 1; // minus 1 to fix the indexing
                         }
@@ -161,30 +162,48 @@ public class Store {
                             remItem_Quan = sc.nextInt();
                         }
 
-                        System.out.print("Would you like to remove " + remItem_Quan + itemName_Cart.get(remItem) + "? [1] Yes [2] No  ");
+                        System.out.print("Would you like to remove " + remItem_Quan +" "+itemName_Cart.get(remItem) + "? [1] Yes [2] No  ");
                         int valChoice = sc.nextInt();
 
                         while(valChoice > 2 || valChoice <= 0){
-                            System.out.print("Invalid Input! Would you like to remove " + remItem_Quan + itemName_Cart.get(remItem) + "? [1] Yes [2] No  ");
+                            System.out.print("Invalid Input! Would you like to remove " + remItem_Quan +" "+ itemName_Cart.get(remItem) + "? [1] Yes [2] No  ");
                             valChoice = sc.nextInt(); 
                         }
 
                         if (valChoice == 1){
-                            if(itemQuantity_Cart.get(remItem)== 1){
+                            if(itemQuantity_Cart.get(remItem) == remItem_Quan){
                                 itemName_Cart.remove(remItem); itemPrice_Cart.remove(remItem); itemQuantity_Cart.remove(remItem); itemID_Cart.remove(remItem);
                             }
                             else{
                                 itemQuantity_Cart.set(remItem, itemQuantity_Cart.get(remItem) - remItem_Quan);
                             }
                         }
-
+                        else if (valChoice == 2){
+                            showCart();
+                        }
                     }
-    
-    }
-    
-    public void cartActionMenu(){
-        
-    }
+                    else if (cartActionNum == 3){
 
+                        System.out.println("Are you sure that you want to clear your cart? [1] Yes [2] No : ");
+                        int resetChoice = sc.nextInt();
 
+                        while(resetChoice > 2 || resetChoice < 1){
+                            System.out.println("Invalid Input!");
+                            System.out.println("Are you sure that you want to clear your cart? [1] Yes [2] No : ");
+                            resetChoice = sc.nextInt();
+                        }
+
+                        if (resetChoice == 1){
+                            for (int i = 0; i < itemName_Cart.size(); i++){
+                                itemName_Cart.remove(i); itemPrice_Cart.remove(i); itemQuantity_Cart.remove(i); itemID_Cart.remove(i);
+                            }
+                            showCart();
+                        }
+                        else if (resetChoice == 2) {
+                            showCart();
+                        }
+                       
+                        
+                    }
+    }
 }
