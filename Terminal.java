@@ -2,11 +2,12 @@ import java.util.*;
 public class Terminal {
     public void startTerminal(){
         
+        Random r = new Random();
         Scanner sc = new Scanner(System.in);
-        Store store = new Store();  
+        Store store = new Store(); 
         
         //store.showItems(); //for item testing only
-        Card card = new Card (); 
+        Card card = new Card ();  card.setIdNum(100000 + r.nextInt(900000));
         //insert rand card num for idNUM
         Mastercard mc = new Mastercard();
 
