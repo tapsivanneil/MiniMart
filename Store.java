@@ -6,6 +6,7 @@ public class Store {
 
     Scanner sc = new Scanner(System.in);
     Random r = new Random();
+    Card card = new Card();
 
     double totalAmount;
 
@@ -207,5 +208,31 @@ public class Store {
                     else if (cartActionNum == 4){
                        
                     }
+    }
+
+    public void payment(){
+        showCart();
+
+        System.out.println("[1] Proceed to payment ");
+        System.out.println("[2] Cancel ");
+        System.out.print("\nEnter Action Num: ");
+        int payChoice = sc.nextInt();
+
+        while(payChoice > 2 || payChoice < 1){
+            System.out.print("\nEnter Action Num: ");
+            payChoice = sc.nextInt();
+        }
+
+        if(payChoice == 1){
+            if(card.getCardBalance() < totalAmount){
+                System.out.println("Insufficient Balance! Please load your card");
+            }
+            else{
+                card.setCardBalance(card.getCardBalance() - totalAmount);
+                System.out.println("Payment Successful!");
+                card.showCardInfo();
+            }
+        }
+        
     }
 }
