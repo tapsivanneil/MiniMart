@@ -86,6 +86,9 @@ public class Terminal {
                 case 5:
                     store.showCart();
                     break;
+                case 6:
+                    store.payment();
+                    break;
                     
             }
         }

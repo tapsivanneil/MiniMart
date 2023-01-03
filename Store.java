@@ -86,7 +86,7 @@ public class Store {
             itemChoiceVal = sc.nextInt() - 1;
         }
 
-        System.out.println("Enter Quantity (Remaining Items: "+ itemQuantity.get(itemChoiceVal) +"): ");
+        System.out.print("Enter Quantity (Remaining Items: "+ itemQuantity.get(itemChoiceVal) +"): ");
         int quantity = sc.nextInt();
 
         while(itemName.size()< quantity){
@@ -97,7 +97,6 @@ public class Store {
         itemQuantity.set(itemChoiceVal, itemQuantity.get(itemChoiceVal) - quantity); // deducting bought items in the list
         itemName_Cart.add(itemName.get(itemChoiceVal)); itemPrice_Cart.add(itemPrice.get(itemChoiceVal)); itemQuantity_Cart.add(quantity); itemID_Cart.add(itemID.get(itemChoiceVal));
 
-        System.out.println("Great");
     }
 
     public void showCart() {
@@ -211,28 +210,50 @@ public class Store {
     }
 
     public void payment(){
-        showCart();
+        String formattedItemName = String.format("     Item Name %15s","");
+        String formattedItemPrice = String.format("Price %10s","");
+        String formattedQuantity = String.format("Quantity %10s","");
+        String formattedItemID = String.format("Item ID %10s","");
+        System.out.println(formattedItemName + formattedItemPrice + formattedQuantity + formattedItemID);
 
-        System.out.println("[1] Proceed to payment ");
-        System.out.println("[2] Cancel ");
-        System.out.print("\nEnter Action Num: ");
-        int payChoice = sc.nextInt();
+        for(int i = 0; itemName_Cart.size() > i; i++){ //Displaying store items
+            int num = i + 1;
+            int itemName_indent = itemName_Cart.get(i).length()-25;
+            String form_itemPrice = String.format(itemPrice_Cart.get(i)+"%15s","");
+            String form_itemName = String.format(itemName_Cart.get(i)+"%"+ itemName_indent+"s","");
+            String form_itemID = String.format(itemID_Cart.get(i)+"%10s","");
+            String form_itemQuantity = String.format(itemQuantity_Cart.get(i)+"%15s","");
 
-        while(payChoice > 2 || payChoice < 1){
-            System.out.print("\nEnter Action Num: ");
-            payChoice = sc.nextInt();
-        }
+                if(i<9){
+                    System.out.println("["+0+num+"] "+form_itemName + form_itemPrice + form_itemQuantity + form_itemID);
+                }
+                else{
+                    System.out.println("["+num+"] "+form_itemName + form_itemPrice + form_itemQuantity + form_itemID);   
+                }
+                totalAmount += itemPrice_Cart.get(i) * itemQuantity_Cart.get(i);
+                System.out.println("\nTotal Amount: " + totalAmount);
+                
+                System.out.println("\n[1] Proceed to payment ");
+                System.out.println("[2] Cancel ");
+                System.out.print("\nEnter Action Num: ");
+                int payChoice = sc.nextInt();
 
-        if(payChoice == 1){
-            if(card.getCardBalance() < totalAmount){
-                System.out.println("Insufficient Balance! Please load your card");
-            }
-            else{
-                card.setCardBalance(card.getCardBalance() - totalAmount);
-                System.out.println("Payment Successful!");
-                card.showCardInfo();
-            }
-        }
+                while(payChoice > 2 || payChoice < 1){
+                    System.out.print("\nEnter Action Num: ");
+                    payChoice = sc.nextInt();
+                }
+
+                if(payChoice == 1){
+                    if(card.getCardBalance() < totalAmount){
+                        System.out.println("Insufficient Balance! Please load your card");
+                    }
+                    else{
+                        card.setCardBalance(card.getCardBalance() - totalAmount);
+                        System.out.println("Payment Successful!");
+                        card.showCardInfo();
+                    }
+                }
         
     }
+}
 }
