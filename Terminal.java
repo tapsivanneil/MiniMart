@@ -81,7 +81,7 @@ public class Terminal {
                     store.showItems();
                     break;
                 case 4:
-                    card.setCardBalance();
+                    card.addCardBalance();
                     break;
                 case 5:
                     store.showCart();

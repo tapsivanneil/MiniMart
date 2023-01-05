@@ -14,7 +14,11 @@ public class Card {
         this.cardName = cardName;
     }
 
-    public void setCardBalance(){
+    public void setCardBalance(double cardBalance){
+        this.cardBalance = cardBalance;
+    }
+
+    public void addCardBalance(){
         System.out.print("\nEnter the amount: ");
         double addBalance = sc.nextDouble();
         this.cardBalance = cardBalance + addBalance;
