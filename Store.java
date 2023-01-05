@@ -84,7 +84,7 @@ public class Store {
 
         //int itemChoiceVal = (Integer) itemChoice;
 
-        int itemChoiceVal = sc.nextInt();
+        int itemChoiceVal = sc.nextInt() - 1;
 
         while(itemChoiceVal <= 0 || itemChoiceVal > itemName.size()){
             System.out.println("\nInput Out of Range! Insert the Item Number that you would like to purchase: ");
@@ -237,8 +237,9 @@ public class Store {
                 }
                 totalAmount += itemPrice_Cart.get(i) * itemQuantity_Cart.get(i);
                 System.out.println("\nTotal Amount: " + totalAmount);
-                
-                System.out.println("\n[1] Proceed to payment ");
+        } 
+        
+        System.out.println("\n[1] Proceed to payment ");
                 System.out.println("[2] Cancel ");
                 System.out.print("\nEnter Action Num: ");
                 int payChoice = sc.nextInt();
@@ -266,19 +267,19 @@ public class Store {
                         
                         System.out.println(formattedItemName + formattedItemPrice + formattedQuantity + formattedItemID);
 
-                        for(int i_r = 0; itemName_Cart.size() > i; i++){ //Displaying store items
-                            int num_r = i + 1;
-                            int itemName_indent_r = itemName_Cart.get(i_r).length()-25;
-                            String form_itemPrice_r = String.format(itemPrice_Cart.get(i_r)+"%15s","");
-                            String form_itemName_r = String.format(itemName_Cart.get(i_r)+"%"+ itemName_indent_r+"s","");
-                            String form_itemID_r = String.format(itemID_Cart.get(i_r)+"%10s","");
-                            String form_itemQuantity_r = String.format(itemQuantity_Cart.get(i_r)+"%15s","");
+                        for(int i = 0; itemName_Cart.size() > i; i++){ //Displaying store items
+                            int num = + 1;
+                            int itemName_indent_r = itemName_Cart.get(i).length()-25;
+                            String form_itemPrice_r = String.format(itemPrice_Cart.get(i)+"%15s","");
+                            String form_itemName_r = String.format(itemName_Cart.get(i)+"%"+ itemName_indent_r+"s","");
+                            String form_itemID_r = String.format(itemID_Cart.get(i)+"%10s","");
+                            String form_itemQuantity_r = String.format(itemQuantity_Cart.get(i)+"%15s","");
 
-                            if(i_r<9){
-                                System.out.println("["+0+num_r+"] "+form_itemName_r + form_itemPrice_r + form_itemQuantity_r + form_itemID_r);
+                            if(i<9){
+                                System.out.println("["+0+num+"] "+form_itemName_r + form_itemPrice_r + form_itemQuantity_r + form_itemID_r);
                             }
                             else{
-                                System.out.println("["+num_r+"] "+form_itemName_r + form_itemPrice_r + form_itemQuantity_r + form_itemID_r);   
+                                System.out.println("["+num+"] "+form_itemName_r + form_itemPrice_r + form_itemQuantity_r + form_itemID_r);   
                             }
                             totalAmount += itemPrice_Receipt.get(i) * itemQuantity_Receipt.get(i);
                             System.out.println("\nTotal Amount: " + totalAmount);
@@ -286,7 +287,8 @@ public class Store {
 
                     }
                 }
-        
-    }
-}
-}
+                
+            }
+        }       
+
+
