@@ -313,9 +313,30 @@ public class Store {
             }
 
         System.out.print("What Item would you like to remove? ");
-        int remItem_store = sc.nextInt();
+        int remItem_store = sc.nextInt() - 1;
+
+        System.out.print("How many "+ itemName.get(remItem_store)+ " would you like to remove? Item in store ["+itemQuantity.get(remItem_store)+"] : ");
+        int remQuantity_store = sc.nextInt() - 1;
+
+        System.out.print("Would you like to remove " + remQuantity_store + " " + itemName.get(remItem_store)+ " ? [1] Yes [2] No " );
+        int remVal = sc.nextInt();
+
+        while(remVal > 2 || remVal < 1){
+            System.out.print("Would you like to remove " + remQuantity_store + " " + itemName.get(remItem_store)+ " ? [1] Yes [2] No " );
+            remVal = sc.nextInt();
+        }
+
+        if (remVal == 1){
+            if(itemQuantity.get(remItem_store) == remQuantity_store){
+                itemName.remove(remItem_store); itemQuantity.remove(remItem_store); itemID.remove(remItem_store); itemPrice.remove(remItem_store); 
+            }
+            else{
+                itemQuantity.set(remItem_store, itemQuantity.get(remItem_store) - remQuantity_store);
+            }
+        }
     }
         
+}
 }
     
 
