@@ -334,9 +334,13 @@ public class Store {
                 itemQuantity.set(remItem_store, itemQuantity.get(remItem_store) - remQuantity_store);
             }
         }
-        else{}
-    
-        
+        else{}       
+}
+public void updatePrice(){
+
+}
+public void showReceipts(){
+
 }
 }
     

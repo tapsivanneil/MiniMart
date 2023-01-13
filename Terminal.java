@@ -77,12 +77,12 @@ public class Terminal {
                         System.out.println("[1] Add Item(s) to the Store");
                         System.out.println("[2] Delete Item(s) to the Store");
                         System.out.println("[3] Update price of an Item");
-
+                        System.out.println("[4] Exit");
 
                         System.out.print("\nEnter the action number: ");
                         int actionStore = sc.nextInt();
 
-                        while (actionStore > 2 || actionStore < 1){
+                        while (actionStore > 5 || actionStore < 1){
                             System.out.print("\nEnter the action number: ");
                             actionStore = sc.nextInt();
                         }
@@ -94,9 +94,12 @@ public class Terminal {
                             store.deleteItem();
                         }
                         else if (actionStore == 3){
-
+                            store.updatePrice();
                         }
-                        
+                        else if (actionStore == 4) {
+                            store.showReceipts();
+                        }
+                        else if (actionStore == 5){}
                     }
                     break;
                 case 3:
