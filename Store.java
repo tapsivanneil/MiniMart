@@ -289,7 +289,6 @@ public class Store {
     }
             
     public void deleteItem(){
-
         System.out.println(itemName.size());
         String formattedItemName = String.format("     Item Name %15s","");
         String formattedItemPrice = String.format("Price %10s","");
@@ -311,12 +310,13 @@ public class Store {
             else{
                 System.out.println("["+num+"] "+form_itemName + form_itemPrice + form_itemQuantity + form_itemID);   
             }
+        }
 
         System.out.print("What Item would you like to remove? ");
-        int remItem_store = sc.nextInt() - 1;
+        int remItem_store = sc.nextInt();
 
         System.out.print("How many "+ itemName.get(remItem_store)+ " would you like to remove? Item in store ["+itemQuantity.get(remItem_store)+"] : ");
-        int remQuantity_store = sc.nextInt() - 1;
+        int remQuantity_store = sc.nextInt();
 
         System.out.print("Would you like to remove " + remQuantity_store + " " + itemName.get(remItem_store)+ " ? [1] Yes [2] No " );
         int remVal = sc.nextInt();
@@ -335,7 +335,7 @@ public class Store {
             }
         }
         else{}
-    }
+    
         
 }
 }

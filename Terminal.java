@@ -76,20 +76,25 @@ public class Terminal {
                     if (masPass == mc.getMasterCardPass()){
                         System.out.println("[1] Add Item(s) to the Store");
                         System.out.println("[2] Delete Item(s) to the Store");
+                        System.out.println("[3] Update price of an Item");
 
-                        System.out.println("\nEnter the action number: ");
+
+                        System.out.print("\nEnter the action number: ");
                         int actionStore = sc.nextInt();
 
                         while (actionStore > 2 || actionStore < 1){
-                            System.out.println("\nEnter the action number: ");
+                            System.out.print("\nEnter the action number: ");
                             actionStore = sc.nextInt();
                         }
 
                         if (actionStore == 1){
                             store.addItem();
                         }
-                        else{
+                        else if (actionStore == 2){
                             store.deleteItem();
+                        }
+                        else if (actionStore == 3){
+
                         }
                         
                     }
